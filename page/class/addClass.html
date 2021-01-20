@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>添加班级</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="../../lib/layui-v2.5.5/css/layui.css" media="all">
+		<link rel="stylesheet" href="../../css/public.css" media="all">
+		<style>
+			body {
+				background-color: #ffffff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="layui-form layuimini-form">
+			<div class="layui-form-item">
+				<label class="layui-form-label required">学校名称</label>
+				<div class="layui-input-block">
+					<input type="text" name="schoolName" lay-verify="required" value="太原工业学院" readonly="readonly" class="layui-input">
+					<!--<tips>提示信息</tips>-->
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label required">院系名称</label>
+				<div class="layui-input-block">
+					<input type="text" name="departName" lay-verify="required" value="计算机工程系" readonly="readonly" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label required">专业名称</label>
+				<div class="layui-input-block">
+					<select name="major" lay-filter="major" id="major">
+						<option value="">--请选择--</option>
+						<option value="0">计算机科学与技术</option>
+						<option value="1">软件工程</option>
+						<option value="2">网络工程</option>
+					</select>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label required">班级班号</label>
+				<div class="layui-input-block">
+					<input type="text" name="className" id="className" lay-verify="required" placeholder="请输入班级班号" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label required">入学日期</label>
+				<div class="layui-input-block">
+					<input type="text" name="joindate" id="joindate" lay-verify="date" placeholder="请选择入学日期" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label required">毕业日期</label>
+				<div class="layui-input-block">
+					<input type="text" name="enddate" id="enddate" lay-verify="date" placeholder="请选择毕业日期" autocomplete="off" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label required">班级人数</label>
+				<div class="layui-input-block">
+					<input type="number" name="classNo" id="classNo" lay-verify="required" placeholder="请输入班级人数" class="layui-input" value="35">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label required">班主任</label>
+				<div class="layui-input-block">
+					<input type="text" name="classTeacher" id="classTeacher" lay-verify="required" placeholder="请输入班主任姓名" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label required">班主任电话</label>
+				<div class="layui-input-block">
+					<input type="text" name="tel" id="tel" lay-verify="required" placeholder="请输入班主任电话" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label required">辅导员</label>
+				<div class="layui-input-block">
+					<input type="text" name="counsellor" id="counsellor" lay-verify="required" placeholder="请输入辅导员姓名" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label required">辅导员电话</label>
+				<div class="layui-input-block">
+					<input type="text" name="telphone" id="telphone" lay-verify="required" placeholder="请输入辅导员电话" class="layui-input">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label required">备注</label>
+				<div class="layui-input-block">
+					<textarea name="remark" class="layui-textarea" placeholder="请输入备注信息"></textarea>
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">创建班级</button>
+					<button class="layui-btn layui-btn-primary"  id="reset" type="reset"><i class="layui-icon layui-icon-refresh"></i>重置信息</button>
+				</div>
+			</div>
+		</div>
+		<script src="../../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+		<script>
+			layui.use(['form', 'laydate'], function() {
+				var form = layui.form,
+					layer = layui.layer,
+					laydate = layui.laydate,
+					$ = layui.$;
+				//入学日期
+				laydate.render({
+					elem: '#joindate'
+				});
+				//毕业日期
+				laydate.render({
+					elem: '#enddate'
+				});
+
+				//监听提交
+				form.on('submit(saveBtn)', function(data) {
+					var index = layer.alert(JSON.stringify(data.field), {
+						title: '最终的提交信息'
+					}, function() {
+
+						// 关闭弹出层
+						layer.close(index);
+
+						var iframeIndex = parent.layer.getFrameIndex(window.name);
+						parent.layer.close(iframeIndex);
+
+					});
+
+					return false;
+				});
+                $("#reset").click(function(){
+                	$("#major").val("");
+                	$("#className").val("");
+                	$("#joindate").val("");
+                	$("#enddate").val("");
+                	$("#classNo").val("");
+                	$("#classTeacher").val("");
+                	$("#tel").val("");
+                	$("#counsellor").val("");
+                	$("#telphone").val("");
+                	form.render();	
+                })
+                
+                //验证班级班号
+                $("#className").blur(function(){
+					var className = $("#className").val();
+					var reg1 = /^\d{5}$/; //正则表达式
+					if(className == ''|| className == null || className.trim().length == 0) {
+						layer.msg('班号 不能为空', {
+							icon: 5
+						});
+					} else {
+						if(!reg1.test(className)) {
+							layer.msg('班号格式不对，班号为5位数字', {
+								icon: 5
+							});
+						}
+					}
+               });
+               
+               //验证班主任姓名
+               $("#classTeacher").blur(function() {
+					var reg2 = /^[\u4e00-\u9fa5]{2,6}$/;
+					var classTeacher = $("#classTeacher").val();
+					if(classTeacher == '' || classTeacher == null || classTeacher.trim().length == 0) {
+						layer.msg('姓名不能为空', {
+							icon: 5
+						});
+					} else {
+						if(!reg2.test(classTeacher)) {
+							layer.msg('格式不对，姓名为2-6个汉字', {
+								icon: 5
+							});
+						}
+					}
+				});
+				
+				//验证手机号码
+				$("#tel").blur(function() {
+					var tel = $("#tel").val();
+					var reg3 = /^1[3456789]\d{9}$/; //正则表达式
+					if(tel == '' || tel == null || tel.trim().length == 0) {
+						layer.msg('手机号码不能为空', {
+							icon: 5
+						});
+					} else {
+						if(!reg3.test(tel)) {
+							layer.msg('手机号码第一位必须输1', {
+								icon: 5
+							});
+						}
+					}
+				});
+
+			});
+		</script>
+	</body>
+
+</html>

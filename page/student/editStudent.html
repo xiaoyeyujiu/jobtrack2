@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>编辑成员信息</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="../../lib/layui-v2.5.5/css/layui.css" media="all">
+		<link rel="stylesheet" href="../../css/public.css" media="all">
+		<style>
+			body {
+				background-color: #ffffff;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="layui-form layuimini-form">
+			<div class="layui-form-item">
+				<label class="layui-form-label required">班号</label>
+				<div class="layui-input-block">
+					<input type="number" name="className" id="className" lay-verify="required" lay-reqtext="班号不能为空" placeholder="请输入班号" class="layui-input" value="1003">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label required">学号</label>
+				<div class="layui-input-block">
+					<input type="number" name="cno" id="cno" lay-verify="required" lay-reqtext="学号不能为空" placeholder="请输入学号" class="layui-input" value="10003">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label required">姓名</label>
+				<div class="layui-input-block">
+					<input type="text" name="uname" id="uname" lay-verify="required" lay-reqtext="姓名不能为空" placeholder="请输入姓名" class="layui-input" value="王五">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label required">性别</label>
+				<div class="layui-input-block">
+					<input type="radio" name="sex" value="男" title="男" checked="checked">
+					<input type="radio" name="sex" value="女" title="女">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label required">出生日期</label>
+				<div class="layui-input-block">
+					<input type="text" name="birthday" id="birthday" lay-verify="date" placeholder="请选择出生日期" autocomplete="off" class="layui-input" readonly="readonly" value="1998-12-16">
+				</div>
+			</div>
+			<!--三级联动开始-->
+			<div class="layui-form-item" id="area-picker">
+				<label class="layui-form-label required">籍贯</label>
+				<div class="layui-input-block">
+					<div class="layui-input-inline">
+						<select name="province" id="province" class="province-selector" lay-filter="province-1" data-value="山西省">
+							<option value="">请选择省</option>
+						</select>
+					</div>
+					<div class="layui-input-inline">
+						<select name="city" id="city" class="city-selector" lay-filter="city-1" data-value="太原市">
+							<option value="">请选择市</option>
+						</select>
+					</div>
+					<div class="layui-input-inline">
+						<select name="county" id="county" class="county-selector" lay-filter="county-1" data-value="杏花岭区">
+							<option value="">请选择区</option>
+						</select>
+					</div>
+				</div>
+			</div>
+			<!--三级联动结束-->
+			<div class="layui-form-item">
+				<label class="layui-form-label">QQ</label>
+				<div class="layui-input-block">
+					<input type="number" name="qq" id="qq" placeholder="请输入QQ号码" class="layui-input" value="156895625">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">微信号</label>
+				<div class="layui-input-block">
+					<input type="text" name="weChat" id="weChat" placeholder="请输入微信号"  class="layui-input" value="hhhh">
+				</div>
+			</div>
+			<div class="layui-form-item">
+				<label class="layui-form-label">联系方式</label>
+				<div class="layui-input-block">
+					<input type="text" name="phone" id="phone" placeholder="请输入手机号码"  class="layui-input" value="18356238978">
+				</div>
+			</div>
+			<div class="layui-form-item layui-form-text">
+				<label class="layui-form-label">备注信息</label>
+				<div class="layui-input-block">
+					<textarea name="remark" id="remark" class="layui-textarea" placeholder="请输入备注信息" ></textarea>
+				</div>
+			</div>
+
+			<div class="layui-form-item">
+				<div class="layui-input-block">
+					<button class="layui-btn layui-btn-normal" lay-submit lay-filter="saveBtn">确认保存</button>
+				</div>
+			</div>
+		</div>
+		<script src="../../lib/layui-v2.5.5/layui.js" charset="utf-8"></script>
+		<script src="../../js/lay-config.js?v=1.0.4" charset="utf-8"></script>
+		<script>
+			layui.use(['form', 'laydate', 'layarea', 'layer'], function() {
+				var form = layui.form,
+					layer = layui.layer,
+					laydate = layui.laydate,
+					layarea = layui.layarea,
+					$ = layui.$;
+				laydate.render({
+					elem: '#birthday'
+				})
+				//三级联动
+				layarea.render({
+					elem: '#area-picker',
+					change: function(res) {
+						//选择结果
+						console.log(res);
+					}
+				});
+				//监听提交
+				form.on('submit(saveBtn)', function(data) {
+					var index = layer.alert(JSON.stringify(data.field), {
+						title: '最终的提交信息'
+					}, function() {
+
+						// 关闭弹出层
+						layer.close(index);
+
+						var iframeIndex = parent.layer.getFrameIndex(window.name);
+						parent.layer.close(iframeIndex);
+
+					});
+
+					return false;
+				});
+				$("#reset").click(function() {
+					$("#className").val("");
+					$("#cno").val("");
+					$("#uname").val("");
+					$(":radio").prop("checked", false);
+					$("#birthday").val("");
+					$("#province").val("");
+					$("#city").val("");
+					$("#county").val("");
+					$("#qq").val("");
+					$("#weChat").val("");
+					$("#phone").val("");
+					$("#remark").val("");
+					form.render();
+				})
+				//验证姓名
+				$("#uname").blur(function() {
+					var reg1 = /^[\u4e00-\u9fa5]{2,6}$/;
+					var uname = $("#uname").val();
+					if(uname == '' || uname == null || uname.trim().length == 0) {
+						layer.msg('姓名不能为空', {
+							icon: 5
+						});
+					} else {
+						if(!reg1.test(uname)) {
+							layer.msg('格式不对，姓名为2-6个汉字', {
+								icon: 5
+							});
+						}
+					}
+				})
+
+				//验证学号
+				$("#cno").blur(function() {
+					var cno = $("#cno").val();
+					var reg2 = /^\d{5}$/; //正则表达式
+					if(cno == ''|| cno == null || cno.trim().length == 0) {
+						layer.msg('学号不能为空', {
+							icon: 5
+						});
+					} else {
+						if(!reg2.test(cno)) {
+							layer.msg('学号格式不对，学号为5位数字', {
+								icon: 5
+							});
+						}
+					}
+				});
+
+				//验证 手机号码
+				$("#phone").blur(function() {
+					var phone = $("#phone").val();
+					var reg3 = /^1[3456789]\d{9}$/; //正则表达式
+					if(phone == '' || phone == null || phone.trim().length == 0) {
+						layer.msg('手机号码不能为空', {
+							icon: 5
+						});
+					} else {
+						if(!reg3.test(phone)) {
+							layer.msg('手机号码第一位必须输1', {
+								icon: 5
+							});
+						}
+					}
+				});
+
+			});
+		</script>
+	</body>
+
+</html>
