@@ -1,0 +1,61 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 1000,
+  "data": [
+    {
+      "enterName": "北京柯蓝科技有限公司",
+      "enterCity": "北京",
+      "enterJob": "计算机金融",
+      "enterPerson": "刘上上",
+      "enterTel": "15012567893",
+      "cooperation": "合作中",
+      "enterHire": "Java开发"
+    },
+     {
+      "enterName": "北京思特奇股份有限公司",
+      "enterCity": "北京",
+      "enterJob": "通信行业",
+      "enterPerson": "刘上上",
+      "enterTel": "15012567893",
+      "cooperation": "合作中",
+      "enterHire": "Java开发"
+    },
+     {
+      "enterName": "大连华宇科技有限公司",
+      "enterCity": "大连",
+      "enterJob": "通信行业",
+      "enterPerson": "刘上上",
+      "enterTel": "15012567893",
+      "cooperation": "合作中",
+      "enterHire": "Java开发"
+    },
+    {
+      "enterName": "成都银海软件科技有限公司",
+      "enterCity": "成都",
+      "enterJob": "金融行业",
+      "enterPerson": "刘下下",
+      "enterTel": "15012567893",
+      "cooperation": "合作中",
+      "enterHire": "Java开发"
+    },
+     {
+      "enterName": "山东国子科技有限公司",
+      "enterCity": "山东",
+      "enterJob": "物联网",
+      "enterPerson": "刘下下",
+      "enterTel": "15012567893",
+      "cooperation": "合作中",
+      "enterHire": "Java开发"
+    },
+     {
+      "enterName": "山东国子科技有限公司",
+      "enterCity": "山东",
+      "enterJob": "物联网",
+      "enterPerson": "刘下下",
+      "enterTel": "15012567893",
+      "cooperation": "合作中",
+      "enterHire": "Java开发"
+    }
+  ]  
+}

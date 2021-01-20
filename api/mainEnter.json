@@ -1,0 +1,49 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 1000,
+  "data": [
+    {
+      "enterName": "北京柯蓝科技有限公司",
+      "enterPerson": "刘上上",
+      "classPerson": "李华",
+      "hireTime": "2020-12-12",
+      "activitySite": "科技楼11层1"
+    },
+    {
+      "enterName": "北京思特奇股份有限公司",
+      "enterPerson": "刘上上",
+      "classPerson": "小明",
+      "hireTime": "2020-12-12",
+      "activitySite": "科技楼10层1"
+    },
+    {
+      "enterName": "大连华宇科技有限公司",
+      "enterPerson": "刘上上",
+      "classPerson": "李华",
+      "hireTime": "2020-12-12",
+      "activitySite": "科技楼11层1"
+    },
+    {
+      "enterName": "成都银海软件科技有限公司",
+      "enterPerson": "刘下下",
+      "classPerson": "小明",
+      "hireTime": "2020-12-12",
+      "activitySite": "科技楼11层1"
+    },
+    {
+      "enterName": "山东国子科技有限公司",
+      "enterPerson": "刘下下",
+      "classPerson": "李华 ",
+      "hireTime": "2020-12-12",
+      "activitySite": "科技楼11层1"
+    },
+    {
+      "enterName": "山东国子科技有限公司",
+      "enterPerson": "刘下下",
+      "classPerson": "小明",
+      "hireTime": "2020-12-12",
+      "activitySite": "科技楼11层1"
+    } 
+  ]  
+}

@@ -1,0 +1,61 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 1000,
+  "data": [
+    {
+      "major": "计算机科学与技术",
+      "className": "1001",
+      "period": 2017,
+      "joindate": "2021-01-04",
+      "classNo": 35,
+      "classTeacher": "张三",
+      "counsellor": "李四"
+    },
+     {
+      "major": "计算机科学与技术",
+      "className": "1001",
+      "period": 2017,
+      "joindate": "2021-01-04",
+      "classNo": 35,
+      "classTeacher": "张三",
+      "counsellor": "李四"
+    },
+     {
+      "major": "计算机科学与技术",
+      "className": "1001",
+      "period": 2017,
+      "joindate": "2021-01-04",
+      "classNo": 35,
+      "classTeacher": "张三",
+      "counsellor": "李四"
+    },
+     {
+      "major": "计算机科学与技术",
+      "className": "1001",
+      "period": 2017,
+      "joindate": "2021-01-04",
+      "classNo": 35,
+      "classTeacher": "张三",
+      "counsellor": "李四"
+    },
+     {
+      "major": "计算机科学与技术",
+      "className": "1001",
+      "period": 2017,
+      "joindate": "2021-01-04",
+      "classNo": 35,
+      "classTeacher": "张三",
+      "counsellor": "李四"
+    },
+     {
+      "major": "计算机科学与技术",
+      "className": "1001",
+      "period": 2017,
+      "joindate": "2021-01-04",
+      "classNo": 35,
+      "classTeacher": "张三",
+      "counsellor": "李四"
+    }
+  ]  
+}
